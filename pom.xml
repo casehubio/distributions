@@ -16,6 +16,10 @@
     <description>Leaf apps and packaged deployables — MCP server, CLI tools, Electron app.
         Each module is a thin assembly wiring upstream platform modules into a runnable application.</description>
 
+    <properties>
+        <quarkus.version>${quarkus.platform.version}</quarkus.version>
+    </properties>
+
     <modules>
         <module>mcp-server</module>
     </modules>
