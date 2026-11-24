@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.casehub</groupId>
+        <artifactId>casehub-distributions-parent</artifactId>
+        <version>0.4-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>casehub-distributions-mcp-server</artifactId>
+    <name>CaseHub Distributions :: MCP Server</name>
+    <description>Standalone MCP server exposing connectors' 130+ tools with ref platform defaults.
+        Run from target/quarkus-app/: java -jar quarkus-run.jar</description>
+
+    <dependencies>
+        <!-- Platform MCP runtime -->
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-platform-mcp-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-platform-mcp</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.quarkiverse.mcp</groupId>
+                    <artifactId>quarkus-mcp-server-sse</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Connectors domain APIs (all @McpDomain classes) -->
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-connectors-graphql</artifactId>
+        </dependency>
+
+        <!-- Connector core -->
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-connectors-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-connectors-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-connectors-notification-bridge</artifactId>
+        </dependency>
+
+        <!-- Email connector (required by ConnectorService wiring) -->
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-connectors-email</artifactId>
+        </dependency>
+
+        <!-- All 13 ref implementations (zero-config defaults) -->
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-chat-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-calendar-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-bank-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-email-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-document-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-contacts-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-project-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-location-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-commerce-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-travel-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-health-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-voice-ref</artifactId></dependency>
+        <dependency><groupId>io.casehub</groupId><artifactId>casehub-connectors-mobile-ref</artifactId></dependency>
+
+        <!-- Platform core (NoOpDeliveryChannelRegistry, MockCurrentPrincipal) -->
+        <dependency>
+            <groupId>io.casehub</groupId>
+            <artifactId>casehub-platform-core</artifactId>
+        </dependency>
+
+        <!-- Quarkus runtime -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-arc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-security</artifactId>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <property><name>native</name></property>
+            </activation>
+            <properties>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+            </properties>
+        </profile>
+        <profile>
+            <id>stdio</id>
+            <activation>
+                <property><name>!http</name></property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>io.quarkiverse.mcp</groupId>
+                    <artifactId>quarkus-mcp-server-stdio</artifactId>
+                    <version>${quarkus-mcp-server.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>http</id>
+            <activation>
+                <property><name>http</name></property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>io.quarkiverse.mcp</groupId>
+                    <artifactId>quarkus-mcp-server-sse</artifactId>
+                    <version>${quarkus-mcp-server.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>

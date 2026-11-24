@@ -1,0 +1,49 @@
+providers:
+  - vendor: kokoro
+  - vendor: whisper
+  - vendor: ref
+
+voices:
+  af_heart:
+    vendor: kokoro
+    voice-id: af_heart
+    name: Heart
+    gender: female
+    accent: american
+    quality: 4.5
+    languages: [en, en-US]
+    capability: tts
+
+  bm_daniel:
+    vendor: kokoro
+    voice-id: bm_daniel
+    name: Daniel
+    gender: male
+    accent: british
+    quality: 4.3
+    languages: [en, en-GB]
+    capability: tts
+
+  af_bella:
+    vendor: kokoro
+    voice-id: af_bella
+    name: Bella
+    gender: female
+    accent: american
+    quality: 4.2
+    languages: [en, en-US]
+    capability: tts
+
+  whisper_tiny:
+    vendor: whisper
+    voice-id: whisper-tiny
+    name: Whisper Tiny
+    gender: neutral
+    accent: neutral
+    quality: 4.0
+    languages: [en, en-US, en-GB]
+    capability: stt
+
+defaults:
+  tts-vendor: kokoro
+  stt-vendor: whisper
