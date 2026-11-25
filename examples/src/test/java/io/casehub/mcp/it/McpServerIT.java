@@ -148,6 +148,30 @@ class McpServerIT {
                         .modelName(model)
                         .build();
             }
+            case "vertex" -> {
+                String project = System.getProperty("llm.project",
+                        System.getenv().getOrDefault("ANTHROPIC_VERTEX_PROJECT_ID", "itpc-gcp-cp-pe-eng-claude"));
+                String location = System.getProperty("llm.location",
+                        System.getenv().getOrDefault("CLOUD_ML_REGION", "us-east5"));
+                String model = System.getProperty("llm.model", "claude-sonnet-4-20250514");
+                String baseUrl = "https://" + location + "-aiplatform.googleapis.com/v1/projects/"
+                        + project + "/locations/" + location + "/publishers/anthropic/models/" + model;
+                String token;
+                try {
+                    var proc = new ProcessBuilder("gcloud", "auth", "application-default", "print-access-token")
+                            .redirectErrorStream(true).start();
+                    token = new String(proc.getInputStream().readAllBytes()).trim();
+                    proc.waitFor();
+                } catch (Exception e) {
+                    throw new IllegalStateException("Failed to get ADC token: " + e.getMessage(), e);
+                }
+                yield AnthropicChatModel.builder()
+                        .baseUrl(baseUrl)
+                        .apiKey(token)
+                        .modelName(model)
+                        .version("vertex-2023-10-16")
+                        .build();
+            }
             default -> throw new IllegalArgumentException("Unknown llm.provider: " + provider);
         };
     }
@@ -169,6 +193,8 @@ class McpServerIT {
             }
         } else if ("anthropic".equals(provider)) {
             assumeTrue(System.getenv("ANTHROPIC_API_KEY") != null, "ANTHROPIC_API_KEY not set");
+        } else if ("vertex".equals(provider)) {
+            // Uses Application Default Credentials — gcloud auth application-default login
         }
     }
 

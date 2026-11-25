@@ -40,6 +40,7 @@
             <version>${langchain4j-integrations.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Vertex AI uses AnthropicChatModel with Vertex baseUrl + ADC token -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j</artifactId>
