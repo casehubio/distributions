@@ -206,7 +206,9 @@ class McpServerIT {
         void speakAndTranscribe() {
             String speakResult = mcpClient.executeTool(ToolExecutionRequest.builder()
                     .name("connectors_voice_speak")
-                    .arguments("{\"text\": \"Hello world\"}").build());
+                    .arguments("{\"text\": \"Hello world\", \"voice\": \"ref\"}").build());
+            assumeTrue(!speakResult.contains("No voice platform"),
+                    "Voice provider not available — needs voice-sherpa for real TTS");
             assertThat(speakResult).contains("audioBase64");
 
             String audioBase64 = speakResult.replaceAll(

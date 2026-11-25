@@ -1,0 +1,16 @@
+- id: "g-family"
+  name: "Family"
+  groupType: "USER_CREATED"
+  memberCount: 0
+- id: "g-friends"
+  name: "Friends"
+  groupType: "USER_CREATED"
+  memberCount: 0
+- id: "g-professional"
+  name: "Professional"
+  groupType: "USER_CREATED"
+  memberCount: 0
+- id: "g-services"
+  name: "Service Providers"
+  groupType: "USER_CREATED"
+  memberCount: 0

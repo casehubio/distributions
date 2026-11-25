@@ -1,0 +1,230 @@
+# Summer holiday — Algarve villa
+- id: "acc-001"
+  name: "Casa do Sol — Family Villa"
+  type: "HOLIDAY_HOME"
+  location: "Albufeira, Algarve"
+  description: "3-bedroom villa with private pool, 10 minutes from Praia da Falésia. Sleeps 6."
+  rating: 4.7
+  pricePerNight:
+    amount: 185.00
+    currency: "GBP"
+  amenities:
+    - "Private Pool"
+    - "Free Wi-Fi"
+    - "Full Kitchen"
+    - "Air Conditioning"
+    - "BBQ"
+    - "Parking"
+    - "Beach Towels"
+  images:
+    - "casa-do-sol-pool.jpg"
+    - "casa-do-sol-bedroom.jpg"
+  roomTypes:
+    - name: "Whole Villa"
+      capacity: 6
+      pricePerNight:
+        amount: 185.00
+        currency: "GBP"
+
+# October half-term — Center Parcs
+- id: "acc-002"
+  name: "Center Parcs Longleat Forest"
+  type: "HOLIDAY_HOME"
+  location: "Warminster, Wiltshire"
+  description: "Woodland lodge in the heart of Longleat Forest. Subtropical swimming paradise."
+  rating: 4.3
+  pricePerNight:
+    amount: 240.00
+    currency: "GBP"
+  amenities:
+    - "Subtropical Swimming Paradise"
+    - "Full Kitchen"
+    - "Forest Setting"
+    - "Spa"
+    - "Activities"
+    - "Restaurants"
+  images:
+    - "centerparcs-lodge.jpg"
+    - "centerparcs-pool.jpg"
+  roomTypes:
+    - name: "3-Bed Woodland Lodge"
+      capacity: 6
+      pricePerNight:
+        amount: 240.00
+        currency: "GBP"
+    - name: "3-Bed Executive Lodge"
+      capacity: 6
+      pricePerNight:
+        amount: 340.00
+        currency: "GBP"
+
+# Easter — Lake District cottage
+- id: "acc-003"
+  name: "Lakeside Cottage Windermere"
+  type: "HOLIDAY_HOME"
+  location: "Windermere, Lake District"
+  description: "Stone cottage with lake views, walking distance to Windermere town. Ideal for families."
+  rating: 4.6
+  pricePerNight:
+    amount: 155.00
+    currency: "GBP"
+  amenities:
+    - "Free Wi-Fi"
+    - "Full Kitchen"
+    - "Garden"
+    - "Parking"
+    - "Log Burner"
+    - "Lake Views"
+  images:
+    - "lakeside-cottage-exterior.jpg"
+    - "lakeside-cottage-lounge.jpg"
+  roomTypes:
+    - name: "Whole Cottage"
+      capacity: 6
+      pricePerNight:
+        amount: 155.00
+        currency: "GBP"
+
+# May bank holiday — New Forest camping
+- id: "acc-004"
+  name: "Sandy Balls Holiday Village"
+  type: "HOLIDAY_HOME"
+  location: "Fordingbridge, New Forest"
+  description: "Family-friendly camping and lodges in the New Forest. Cycle trails, swimming pool."
+  rating: 4.2
+  pricePerNight:
+    amount: 45.00
+    currency: "GBP"
+  amenities:
+    - "Swimming Pool"
+    - "Cycle Hire"
+    - "Play Areas"
+    - "Restaurant"
+    - "Shop"
+  images:
+    - "sandy-balls-campsite.jpg"
+  roomTypes:
+    - name: "Camping Pitch"
+      capacity: 6
+      pricePerNight:
+        amount: 45.00
+        currency: "GBP"
+    - name: "Forest Lodge"
+      capacity: 6
+      pricePerNight:
+        amount: 120.00
+        currency: "GBP"
+
+# Grandma Jean — Tunbridge Wells B&B
+- id: "acc-005"
+  name: "The Tunbridge Wells B&B"
+  type: "BED_AND_BREAKFAST"
+  location: "Tunbridge Wells, Kent"
+  description: "Victorian townhouse B&B near the Pantiles. Full English breakfast included."
+  rating: 4.4
+  pricePerNight:
+    amount: 85.00
+    currency: "GBP"
+  amenities:
+    - "Free Wi-Fi"
+    - "Full English Breakfast"
+    - "Garden"
+    - "Parking"
+  images:
+    - "tw-bb-exterior.jpg"
+  roomTypes:
+    - name: "Double En-Suite"
+      capacity: 2
+      pricePerNight:
+        amount: 85.00
+        currency: "GBP"
+    - name: "Family Room"
+      capacity: 4
+      pricePerNight:
+        amount: 120.00
+        currency: "GBP"
+
+# Brighton day trip → overnight option
+- id: "acc-006"
+  name: "Brighton Harbour Hotel"
+  type: "HOTEL"
+  location: "Brighton, East Sussex"
+  description: "Boutique hotel on the seafront with sea views and rooftop pool."
+  rating: 4.5
+  pricePerNight:
+    amount: 165.00
+    currency: "GBP"
+  amenities:
+    - "Free Wi-Fi"
+    - "Rooftop Pool"
+    - "Restaurant"
+    - "Bar"
+    - "Sea Views"
+  images:
+    - "brighton-harbour-exterior.jpg"
+    - "brighton-harbour-pool.jpg"
+  roomTypes:
+    - name: "Classic Double"
+      capacity: 2
+      pricePerNight:
+        amount: 165.00
+        currency: "GBP"
+    - name: "Family Sea View"
+      capacity: 4
+      pricePerNight:
+        amount: 245.00
+        currency: "GBP"
+
+# Paris trip idea
+- id: "acc-007"
+  name: "Hôtel du Petit Moulin"
+  type: "HOTEL"
+  location: "Paris, Le Marais"
+  description: "Boutique hotel in a 17th-century bakery in the heart of Le Marais."
+  rating: 4.6
+  pricePerNight:
+    amount: 195.00
+    currency: "GBP"
+  amenities:
+    - "Free Wi-Fi"
+    - "Bar"
+    - "Concierge"
+    - "Courtyard"
+  images:
+    - "petit-moulin-exterior.jpg"
+  roomTypes:
+    - name: "Classic Double"
+      capacity: 2
+      pricePerNight:
+        amount: 195.00
+        currency: "GBP"
+    - name: "Superior Family"
+      capacity: 4
+      pricePerNight:
+        amount: 280.00
+        currency: "GBP"
+
+# Norfolk — last year's holiday (history reference)
+- id: "acc-008"
+  name: "North Norfolk Coastal Cottage"
+  type: "HOLIDAY_HOME"
+  location: "Wells-next-the-Sea, Norfolk"
+  description: "Charming flint cottage near the harbour. Last year's summer holiday."
+  rating: 4.5
+  pricePerNight:
+    amount: 130.00
+    currency: "GBP"
+  amenities:
+    - "Free Wi-Fi"
+    - "Full Kitchen"
+    - "Garden"
+    - "Parking"
+    - "Dog Friendly"
+  images:
+    - "norfolk-cottage-exterior.jpg"
+  roomTypes:
+    - name: "Whole Cottage"
+      capacity: 5
+      pricePerNight:
+        amount: 130.00
+        currency: "GBP"
